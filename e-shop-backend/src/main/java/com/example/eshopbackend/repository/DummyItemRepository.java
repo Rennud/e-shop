@@ -4,10 +4,8 @@ import com.example.eshopbackend.pojo.Category;
 import com.example.eshopbackend.pojo.Item;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class DummyItemRepository {
