@@ -15,7 +15,7 @@ type CardData = {
 
 export default function ProductCard({ productName, image, price }: CardData) {
   return (
-    <Card variant="outlined" sx={{ width: 320 }}>
+    <Card variant="outlined" sx={{ width: 320, background: '#8f663d' }}>
       <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
         {productName}
       </Typography>

@@ -1,18 +1,18 @@
-import React from 'react';
-import './App.css';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import ProductPage from './pages/ProductPage/index';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/HomePage';
 
 function App() {
   return (
-    <div className="App">
-     <Navbar/>
-     <ProductPage/>
-     <Footer />
-    </div>
-  );
-}
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/products" element={<Products/>}/>
+            <Route path="/contact-me" element={<ContactMe />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} /> */}
+        </Routes>
+      </BrowserRouter>
 
+  );
+};
 export default App;
