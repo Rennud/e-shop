@@ -1,21 +1,29 @@
 package com.example.eshopbackend.payload.response;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 public class JwtResponse {
 
-    private final String token;
-
-    private final Long id;
-
-    private final String username;
-
-    private final String email;
+    private String token;
 
     private String type = "Bearer";
+
+    private Long id;
+
+    private String username;
+
+    private String email;
+
+    public JwtResponse(String accessToken, Long id, String username, String email) {
+        this.token = accessToken;
+        this.id = id;
+        this.username = username;
+        this.email = email;
+    }
+
+
+
 }
