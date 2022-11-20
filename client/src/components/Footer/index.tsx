@@ -43,13 +43,28 @@ export default function Footer() {
   return (
     <footer className={classes.footerStyles}>
       <div className={classes.socialIconsContainer}>
-        <a href='https://www.instagram.com/' className={classes.socialMediaLinks} target="_blank">
+        <a
+          href='https://www.instagram.com/'
+          className={classes.socialMediaLinks}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <Instagram style={{fontSize: '30px'}}/>
         </a>
-        <a href='https://www.facebook.com/' className={classes.socialMediaLinks} target="_blank">
+        <a
+          href='https://www.facebook.com/'
+          className={classes.socialMediaLinks}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <Facebook  style={{fontSize: '30px'}}/>
         </a>
-        <a href='https://twitter.com/' className={classes.socialMediaLinks} target="_blank">
+        <a
+          href='https://twitter.com/'
+          className={classes.socialMediaLinks}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <Twitter style={{fontSize: '30px'}}/>
         </a>
       </div>
