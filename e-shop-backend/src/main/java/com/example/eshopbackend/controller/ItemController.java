@@ -1,7 +1,7 @@
 package com.example.eshopbackend.controller;
 
 import com.example.eshopbackend.pojo.Category;
-import com.example.eshopbackend.pojo.Item;
+import com.example.eshopbackend.entity.Item;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

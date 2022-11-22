@@ -1,7 +1,7 @@
 package com.example.eshopbackend.repository;
 
 import com.example.eshopbackend.pojo.Category;
-import com.example.eshopbackend.pojo.Item;
+import com.example.eshopbackend.entity.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -20,8 +20,6 @@ import java.util.stream.LongStream;
 public class InitDb {
 
     private final Random random = new Random();
-
-    private final DummyItemRepository dummyItemRepository;
 
     private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
@@ -134,12 +132,4 @@ public class InitDb {
         return Category.builder().id(0).name("cheap").itemList(itemList).build();
         }
 
-    /**
-     * Fills dummy DB with random data with size 10
-     */
-    @EventListener(ApplicationReadyEvent.class)
-    public void init(){
-        dummyItemRepository.putItemsInList(makeListOfRandomItems(10L));
-        dummyItemRepository.setCategory(makeCheapCategory(10L));
-    }
 }

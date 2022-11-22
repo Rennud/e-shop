@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +30,9 @@ public class User {
     private String lastName;
 
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orderList;
 
     public User(String username, String email, String firstName, String lastName, String password) {
         this.username = username;
