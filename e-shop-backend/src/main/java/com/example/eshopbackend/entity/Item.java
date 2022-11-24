@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "item_table")
 public class Item {

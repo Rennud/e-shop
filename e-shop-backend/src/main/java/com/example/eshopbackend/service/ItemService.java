@@ -45,16 +45,24 @@ public class ItemService {
         }
         throw new RuntimeException("List of items is empty!");
     }
+    public Item changeStateToSold(Item item){
+        item.setSold(true);
+        return item;
+    }
 
-    /**
-     * Dummy method, returns always same Category!
-     * @param
-     * @return
-     */
-//    public Category getCategory(){
-//        return itemRepository.getCategory();
-//    }
+    public Item setOrder(Item item, Order order){
+        item.setOrder(order);
+        return item;
+    }
+    public List<Item> updateItems(List<Item> itemList, Order order){
+        List<Item> updatedItems = itemList.stream()
+                .map(i -> itemRepository.getReferenceById(i.getId()))
+                .map(this::changeStateToSold)
+                .map(i -> setOrder(i,order))
+                .toList();
 
-
+        updatedItems.forEach(itemRepository::save);
+        return updatedItems;
+    }
 
 }

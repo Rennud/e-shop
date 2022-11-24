@@ -3,8 +3,6 @@ package com.example.eshopbackend.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +12,6 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
-@ToString
 @Table(name = "order_table")
 public class Order {
 

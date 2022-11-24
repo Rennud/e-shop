@@ -58,12 +58,9 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderDto makeOrder(User user, List<ItemDto> itemDtoList){
+    public OrderDto saveOrder(User user, List<ItemDto> itemDtoList){
 
         List<Item> itemList = fetchItemsFromDB(itemDtoList);
-
-        this.changeStateToSold(itemList);
-        itemList.forEach(e-> log.info(e.toString() + "was updated in DB."));
 
         Order order = new Order();
 
@@ -71,6 +68,9 @@ public class OrderService {
         order.setItemList(itemList);
         order.setTotalPrice(countTotalPrice(itemList));
         order.setUser(user);
+
+        itemService.updateItems(itemList,order);
+        itemList.forEach(e-> log.info(e.toString() + "was updated in DB."));
 
 
         orderRepository.save(order);
