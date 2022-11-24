@@ -2,6 +2,8 @@ package com.example.eshopbackend.mapper;
 
 import com.example.eshopbackend.dto.UserDto;
 import com.example.eshopbackend.entity.User;
+import org.mapstruct.Mapper;
 
-public interface UserMapper extends GenericMapper<User, UserDto>{
+@Mapper(componentModel = "spring")
+public interface UserMapper extends GenericMapper<User, UserDto> {
 }

@@ -1,6 +1,5 @@
 package com.example.eshopbackend.controller;
 
-import com.example.eshopbackend.pojo.Category;
 import com.example.eshopbackend.entity.Item;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,14 +13,6 @@ public interface ItemController {
     @GetMapping(value = "/item/{size}/{page}", produces = "application/json")
     List<Item> getItemList(@PathVariable int size, @PathVariable int page);
 
-    @GetMapping(value = "/category/{id}", produces = "application/json")
-    Category getCategoryById(@PathVariable long id);
-
-    @GetMapping(value = "/category/{name}", produces = "application/json")
-    Category getCategoryByName(@PathVariable String name);
-
-    @GetMapping(value = "/category/{size}/{page}", produces = "application/json")
-    List<Category> getCategoryList(@PathVariable int size, @PathVariable int page);
 
 
 }

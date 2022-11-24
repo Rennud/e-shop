@@ -1,6 +1,6 @@
 package com.example.eshopbackend.controller;
 
-import com.example.eshopbackend.pojo.Category;
+
 import com.example.eshopbackend.entity.Item;
 import com.example.eshopbackend.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -39,36 +39,4 @@ public class ItemControllerImpl implements ItemController {
         return itemService.getItemList(size, page);
     }
 
-    /**
-     * Dummy method, returns always same Category!
-     * TODO: redo this method. return null!!
-     * @param id
-     * @return
-     */
-    @Override
-    public Category getCategoryById(long id) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Dummy method, returns always same Category!
-     * TODO: redo this method. return null!!
-     * @param
-     * @return
-     */
-    @Override
-    public Category getCategoryByName(String name) {
-        return null;
-    }
-
-    /**
-     * Dummy method, returns always same Category!
-     * TODO: redo this method. return null!!
-     * @param
-     * @return
-     */
-    @Override
-    public List<Category> getCategoryList(int size, int page) {
-        return null;
-    }
 }

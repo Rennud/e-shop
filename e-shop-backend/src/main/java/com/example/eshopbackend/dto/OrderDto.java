@@ -12,9 +12,6 @@ public record OrderDto(
         long id,
 
         @JsonProperty
-        long userId,
-
-        @JsonProperty
         int quantity,
 
         @JsonProperty
@@ -24,7 +21,7 @@ public record OrderDto(
         User user,
 
         @JsonProperty
-        List<Item>itemList
+        List<Item> itemList
 ) {
 
 }

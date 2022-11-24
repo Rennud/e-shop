@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS item_table CASCADE;
+DROP TABLE IF EXISTS order_table CASCADE;
+
 CREATE TABLE item_table
 (
     id SERIAL NOT NULL,
@@ -24,8 +27,6 @@ CREATE TABLE order_table(
     PRIMARY KEY(id)
 );
 
-
-
 ALTER TABLE IF EXISTS item_table
     ADD CONSTRAINT fk_order_id FOREIGN KEY (order_id)
     REFERENCES public.order_table(id) MATCH SIMPLE
@@ -40,5 +41,5 @@ ALTER TABLE IF EXISTS  order_table
     ON DELETE NO ACTION
     NOT VALID;
 
-    insert into order_table(quantity,total_price,user_id) values(2,46.75,1);
-    insert into item_table(name, price, sold, category, order_id) values ('Columbia Testerio', 0.99, true,'Central America',1);
+insert into order_table(quantity,total_price,user_id) values(2,46.75,1);
+insert into item_table(name, price, sold, category, order_id) values ('Columbia Testerio', 0.99, true,'Central America',1);

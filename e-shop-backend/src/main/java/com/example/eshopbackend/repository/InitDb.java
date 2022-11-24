@@ -1,11 +1,8 @@
 package com.example.eshopbackend.repository;
 
-import com.example.eshopbackend.pojo.Category;
 import com.example.eshopbackend.entity.Item;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.LongStream;
 
-@Component
+
 @RequiredArgsConstructor
 public class InitDb {
 
@@ -117,19 +114,5 @@ public class InitDb {
                 .forEach(i-> itemList.get((int) i -1).setId(i));
 
         return itemList;
-
     }
-
-    /**
-     * Create dummy Category with name cheap
-     * @param sizeOfItemsArray size of Category listOfItems
-     * @return
-     */
-    public Category makeCheapCategory(long sizeOfItemsArray){
-        List<Item> itemList = LongStream.range(0, sizeOfItemsArray)
-                .mapToObj(i -> makeRandomItemWithDefinedPrice(0.0,4.9))
-                .toList();
-        return Category.builder().id(0).name("cheap").itemList(itemList).build();
-        }
-
 }

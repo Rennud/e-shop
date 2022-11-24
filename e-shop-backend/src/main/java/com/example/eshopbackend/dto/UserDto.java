@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public record UserDto (
+public record UserDto(
 
         @JsonProperty
         long id,
@@ -21,5 +21,5 @@ public record UserDto (
         String password,
         @JsonProperty
         List<Order> orderList
-){
+) {
 }

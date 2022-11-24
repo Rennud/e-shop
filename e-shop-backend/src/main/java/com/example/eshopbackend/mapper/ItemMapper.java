@@ -5,5 +5,5 @@ import com.example.eshopbackend.entity.Item;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ItemMapper extends GenericMapper<Item, ItemDto>{
+public interface ItemMapper extends GenericMapper<Item, ItemDto> {
 }

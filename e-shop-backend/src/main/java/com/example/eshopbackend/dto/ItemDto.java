@@ -1,10 +1,9 @@
 package com.example.eshopbackend.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
 
 
-public record ItemDto (
+public record ItemDto(
         @JsonProperty
         long id,
 
@@ -12,7 +11,6 @@ public record ItemDto (
         String name,
 
         @JsonProperty
-        double price)
-{
+        double price) {
 
 }
