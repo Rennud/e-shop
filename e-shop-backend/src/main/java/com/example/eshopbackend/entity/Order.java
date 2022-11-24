@@ -1,5 +1,7 @@
 package com.example.eshopbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.boot.autoconfigure.web.WebProperties;
@@ -26,9 +28,11 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "order")
+    @JsonManagedReference
     private List<Item> itemList;
 
 }

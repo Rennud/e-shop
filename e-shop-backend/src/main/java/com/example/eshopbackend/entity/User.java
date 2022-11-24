@@ -1,5 +1,6 @@
 package com.example.eshopbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Order> orderList;
 
     public User(String username, String email, String firstName, String lastName, String password) {

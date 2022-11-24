@@ -5,7 +5,7 @@ CREATE TABLE item_table
     price DECIMAL NOT NULL,
     sold boolean NOT NULL,
     category VARCHAR(100) NOT NULL,
-	order_id_fk INTEGER,
+	order_id INTEGER,
     PRIMARY KEY(id)
 );
 
@@ -20,23 +20,25 @@ CREATE TABLE order_table(
     id SERIAL NOT NULL,
     quantity NUMERIC,
     total_price DECIMAL,
-    user_id_fk INTEGER,
+    user_id INTEGER,
     PRIMARY KEY(id)
 );
 
-insert into order_table(quantity,total_price,user_id_fk) values(2,46.75,1);
-insert into item_table(name, price, sold, category, order_id_fk) values ('Columbia Testerio', 0.99, true,'Central America',1);
+
 
 ALTER TABLE IF EXISTS item_table
-    ADD CONSTRAINT order_id FOREIGN KEY (order_id_fk)
+    ADD CONSTRAINT fk_order_id FOREIGN KEY (order_id)
     REFERENCES public.order_table(id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
 ALTER TABLE IF EXISTS  order_table
-    ADD CONSTRAINT user_id FOREIGN KEY (user_id_fk)
+    ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id)
     REFERENCES public.user_table(id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
+
+    insert into order_table(quantity,total_price,user_id) values(2,46.75,1);
+    insert into item_table(name, price, sold, category, order_id) values ('Columbia Testerio', 0.99, true,'Central America',1);

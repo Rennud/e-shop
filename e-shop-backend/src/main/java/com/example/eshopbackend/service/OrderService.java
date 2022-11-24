@@ -40,6 +40,9 @@ public class OrderService {
         if(orderRepository.findById(id).isEmpty()){
             throw new RuntimeException("Id not found");
         }
+        Order order = orderRepository.findById(id).get();
+        List<ItemDto> dtoList = itemMapper.toDto(order.getItemList());
+
         return orderMapper.toDto(orderRepository.findById(id).get());
     }
 
