@@ -33,7 +33,13 @@ public class UserService {
         }
     }
 
-    public User getFromToken(String token){
+    /**
+     * Return User Entity based on token. Searches by username.
+     * @param token whole token even with Bearer at the begining
+     * @return User from DB
+     */
+    public User getUserFromToken(String token){
+        token = token.substring(6);
         if(userRepository.findByUsername(jwtUtils.getUserNameFromJwtToken(token)).isEmpty()){
             throw new NotValidInputException("Could not find User in DB from given token");
         }

@@ -55,8 +55,7 @@ public class OrderController {
     @PostMapping(value = "/token", produces = "application/json", consumes = "application/json")
     public OrderDto postOrderWithToken(@RequestHeader (name="Authorization") String token, @RequestBody List<ItemDto> itemDtoList){
 
-        token = token.substring(6);
-        User user = userService.getFromToken(token);
+        User user = userService.getUserFromToken(token);
 
         System.out.println(user.getFirstName() + " " +user.getLastName());
         return orderService.saveOrder(user, itemDtoList);
