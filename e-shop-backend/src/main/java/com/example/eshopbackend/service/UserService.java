@@ -3,6 +3,8 @@ package com.example.eshopbackend.service;
 import com.example.eshopbackend.entity.User;
 import com.example.eshopbackend.exception.NotValidInputException;
 import com.example.eshopbackend.repository.UserRepository;
+import com.example.eshopbackend.security.jwt.JwtUtils;
+import com.example.eshopbackend.security.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,10 @@ import org.springframework.stereotype.Component;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private final JwtUtils jwtUtils;
+
+    private final UserDetailsServiceImpl userDetailsService;
 
     /**
      * Gets User from DB based on their id
@@ -25,5 +31,12 @@ public class UserService {
         } else {
             return userRepository.findById(id).get();
         }
+    }
+
+    public User getFromToken(String token){
+        if(userRepository.findByUsername(jwtUtils.getUserNameFromJwtToken(token)).isEmpty()){
+            throw new NotValidInputException("Could not find User in DB from given token");
+        }
+        return userRepository.findByUsername(jwtUtils.getUserNameFromJwtToken(token)).get();
     }
 }
