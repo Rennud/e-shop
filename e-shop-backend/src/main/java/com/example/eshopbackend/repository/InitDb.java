@@ -3,7 +3,6 @@ package com.example.eshopbackend.repository;
 import com.example.eshopbackend.entity.Item;
 import lombok.RequiredArgsConstructor;
 
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -22,12 +21,13 @@ public class InitDb {
 
     /**
      * Method for generating random prices
-     * @param lowestIncluded lowest generated price
+     *
+     * @param lowestIncluded  lowest generated price
      * @param highestExcluded highest generated price EXCLUDED
      * @return random price
      */
-    public double getRandomPrice(double lowestIncluded, double highestExcluded){
-        BigDecimal bigDecimal = BigDecimal.valueOf(random.nextDouble(lowestIncluded,highestExcluded));
+    public double getRandomPrice(double lowestIncluded, double highestExcluded) {
+        BigDecimal bigDecimal = BigDecimal.valueOf(random.nextDouble(lowestIncluded, highestExcluded));
         bigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_UP);
 
         return bigDecimal.doubleValue();
@@ -35,18 +35,19 @@ public class InitDb {
 
     /**
      * Method for determining category based on price
+     *
      * @param price price of Item
      * @return name of Category
      */
     public String nameOfCategory(double price) throws IOException {
 
-        if (price <= 5.0){
+        if (price <= 5.0) {
             return "cheap";
         }
-        if(price <= 10){
+        if (price <= 10) {
             return "fair price";
         }
-        if(price > 10){
+        if (price > 10) {
             return "expensive";
         }
         throw new IOException("Out of range");
@@ -54,20 +55,22 @@ public class InitDb {
 
     /**
      * Method for generating random price between 0.00 to 15.99
+     *
      * @return price rounded to two decimals
      */
-    public double getRandomPrice(){
-        BigDecimal bigDecimal = BigDecimal.valueOf(random.nextDouble(0.0,16.0));
+    public double getRandomPrice() {
+        BigDecimal bigDecimal = BigDecimal.valueOf(random.nextDouble(0.0, 16.0));
         bigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_UP);
         return bigDecimal.doubleValue();
     }
 
     /**
      * Generate random name of coffee
+     *
      * @return random name of coffee
      */
-    public String getRandomNameOfItem(){
-        List<String> adjectives = List.of("Delicious","Strange","Great", "Hot");
+    public String getRandomNameOfItem() {
+        List<String> adjectives = List.of("Delicious", "Strange", "Great", "Hot");
         List<String> nouns = List.of(" Brazil", " Kenya", " Ethiopia", " Burundi");
 
         int randomAdjective = random.nextInt(4);
@@ -78,22 +81,24 @@ public class InitDb {
 
     /**
      * Generates random item with defined price range
-     * @param lowestIncluded lowest possible price
+     *
+     * @param lowestIncluded  lowest possible price
      * @param highestExcluded highest possible price EXCLUDED
      * @return
      */
-    public Item makeRandomItemWithDefinedPrice(double lowestIncluded, double highestExcluded){
+    public Item makeRandomItemWithDefinedPrice(double lowestIncluded, double highestExcluded) {
         return Item.builder()
                 .name(this.getRandomNameOfItem())
-                .price(this.getRandomPrice(lowestIncluded,highestExcluded))
+                .price(this.getRandomPrice(lowestIncluded, highestExcluded))
                 .build();
     }
 
     /**
      * Generates random Item with price between 0.00 to 15.99
+     *
      * @return random Item
      */
-    public Item makeRandomItem(){
+    public Item makeRandomItem() {
         return Item.builder()
                 .name(this.getRandomNameOfItem())
                 .price(this.getRandomPrice())
@@ -102,16 +107,17 @@ public class InitDb {
 
     /**
      * Generates random list of Items with prices between 0.00 to 15.99
+     *
      * @param size
      * @return
      */
-    public List<Item> makeListOfRandomItems(long size){
-        List<Item> itemList = LongStream.range(1L,size)
+    public List<Item> makeListOfRandomItems(long size) {
+        List<Item> itemList = LongStream.range(1L, size)
                 .mapToObj(i -> makeRandomItem())
                 .toList();
 
         LongStream.range(1L, size)
-                .forEach(i-> itemList.get((int) i -1).setId(i));
+                .forEach(i -> itemList.get((int) i - 1).setId(i));
 
         return itemList;
     }

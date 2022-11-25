@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Component
@@ -29,6 +30,7 @@ public class OrderService {
 
     /**
      * Gets list of Entities from DB from Dto List
+     *
      * @param itemDtoList list of Dtos
      * @return List of Entities
      */
@@ -41,6 +43,7 @@ public class OrderService {
 
     /**
      * Gets Order from DB based on id
+     *
      * @param id of Order
      * @return Order as Dto
      */
@@ -81,7 +84,7 @@ public class OrderService {
 
         List<Item> itemList = fetchItemsFromDB(itemDtoList);
 
-       if (itemService.validItems(itemList)) {
+        if (itemService.validItems(itemList)) {
             // Removed builder during debugging DB connection. To scared to put it back
             Order order = new Order();
             order.setQuantity(itemDtoList.size());
@@ -94,7 +97,7 @@ public class OrderService {
             orderRepository.save(order);
 
             return orderMapper.toDto(order);
-       }
+        }
         throw new NotValidInputException("One or more items in order was already sold");
     }
 }

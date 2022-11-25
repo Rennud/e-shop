@@ -1,6 +1,7 @@
-package com.example.eshopbackend.controller;
+package com.example.eshopbackend.controller.impl;
 
 
+import com.example.eshopbackend.controller.inter.ItemController;
 import com.example.eshopbackend.entity.Item;
 import com.example.eshopbackend.service.ItemService;
 import lombok.RequiredArgsConstructor;

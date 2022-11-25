@@ -1,14 +1,13 @@
 package com.example.eshopbackend.security.services;
 
+import com.example.eshopbackend.entity.User;
+import com.example.eshopbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.eshopbackend.entity.User;
-import com.example.eshopbackend.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

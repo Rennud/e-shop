@@ -9,18 +9,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class EShopBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EShopBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EShopBackendApplication.class, args);
+    }
 
-	@Bean
-	public WebMvcConfigurer configure() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry reg) {
-				reg.addMapping("/**").allowedOrigins("*");
-			}
-		};
-	}
+    @Bean
+    public WebMvcConfigurer configure() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry reg) {
+                reg.addMapping("/**").allowedOrigins("*");
+            }
+        };
+    }
 
 }

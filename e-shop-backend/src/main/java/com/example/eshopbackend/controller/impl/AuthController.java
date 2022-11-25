@@ -1,4 +1,4 @@
-package com.example.eshopbackend.controller;
+package com.example.eshopbackend.controller.impl;
 
 import com.example.eshopbackend.entity.User;
 import com.example.eshopbackend.payload.request.LoginRequest;
@@ -56,9 +56,9 @@ public class AuthController {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail()
+                        userDetails.getId(),
+                        userDetails.getUsername(),
+                        userDetails.getEmail()
                 )
         );
     }
