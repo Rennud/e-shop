@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import ProductsContainer from "../../components/ProductContainer";
 import { HomeHeader } from "./layout";
 
-const ITEM_API_BASE_URL = "http://localhost:8080/api/item";
+const ITEM_API_BASE_URL = "http://localhost:8080/api/item/all/not_sold";
 
 const Home = () => {
   const [data, setData] = useState({});
   const getItemsById = (itemId) => {
-    fetch(`${ITEM_API_BASE_URL}/${itemId}`, {
+    fetch(ITEM_API_BASE_URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getItemsById(1);
+    getItemsById();
   }, []);
   return (
     <>
