@@ -12,7 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/item")
 public class ItemControllerImpl implements ItemController {
 
     private final ItemService itemService;
@@ -36,8 +36,36 @@ public class ItemControllerImpl implements ItemController {
      * @return List of Items
      */
     @Override
-    public List<Item> getItemList(int size, int page) {
+    public List<Item> getItemListPage(int size, int page) {
         return itemService.getItemList(size, page);
+    }
+
+    /**
+     * Returns all Items
+     * @return List of Items
+     */
+    @Override
+    public List<Item> getItemListAll() {
+        return itemService.findAll();
+    }
+
+    /**
+     * GET
+     * @return List of all Items from DB that has NOT been sold
+     */
+    @Override
+    public List<Item> getItemListNotSold() {
+        return itemService.findAllNotSold();
+    }
+
+    /**
+     * GET all Items of given category
+     * @param category
+     * @return List of Items with given category
+     */
+    @Override
+    public List<Item> getCategory(String category) {
+        return itemService.findByCategory(category);
     }
 
 }

@@ -114,7 +114,35 @@ public class ItemService {
      */
     public boolean validItems(List<Item> itemList) {
         return itemList.stream()
-                .allMatch(item -> !item.isSold());
+                .noneMatch(Item::isSold);
+    }
+
+    /**
+     * Finds all Items by given category.
+     * @param category you want to return
+     * @return List of Items
+     */
+    public List<Item> findByCategory(String category){
+        if(itemRepository.findAllByCategory(category).isEmpty()){
+            throw new NotValidInputException("Category does not exist!");
+        }
+        return itemRepository.findAllByCategory(category);
+    }
+
+    /**
+     * Return all Items from DB
+     * @return List of Items in DB
+     */
+    public List<Item> findAll(){
+        return itemRepository.findAll();
+    }
+
+    /**
+     * Uses JPQL native query to get NOT sold Items from DB.
+     * @return List of Items that are not sold
+     */
+    public List<Item> findAllNotSold(){
+        return itemRepository.findAllNotSold();
     }
 
 }
