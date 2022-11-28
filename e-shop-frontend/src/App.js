@@ -11,6 +11,7 @@ import AuthVerify from "./common/AuthVerify";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import EventBus from "./common/EventBus";
+import BoardUser from "./components/board-user.component";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/user" element={<BoardUser />} />
         </Routes>
       </>
       <AuthVerify logout={logout} />
