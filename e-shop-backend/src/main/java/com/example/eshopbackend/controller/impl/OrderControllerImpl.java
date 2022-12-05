@@ -5,6 +5,7 @@ import com.example.eshopbackend.dto.ItemDto;
 import com.example.eshopbackend.dto.OrderDto;
 import com.example.eshopbackend.entity.User;
 import com.example.eshopbackend.exception.NotValidInputException;
+import com.example.eshopbackend.service.EmailService;
 import com.example.eshopbackend.service.OrderService;
 import com.example.eshopbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ public class OrderControllerImpl implements OrderController {
     private final OrderService orderService;
 
     private final UserService userService;
+
+    private final EmailService emailService;
 
     /**
      * GET method that returns OrderDto based on its id.<p>
@@ -63,8 +66,11 @@ public class OrderControllerImpl implements OrderController {
 
         User user = userService.getUserFromToken(token);
 
-        return orderService.saveOrder(user, itemDtoList);
+        OrderDto orderDto = orderService.saveOrder(user, itemDtoList);
 
+        emailService.sendConfirmationEmail(orderDto);
+
+        return orderDto;
     }
 
 }
